@@ -45,5 +45,7 @@
 	<string>to take photos and video</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>to save photos and videos</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>to capture videos</string>
 </dict>
 </plist>

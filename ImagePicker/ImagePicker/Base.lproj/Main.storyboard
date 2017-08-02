@@ -33,9 +33,21 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2Uy-9S-zGJ"/>
+                                    <barButtonItem title="录像" id="MMC-Ib-MgY">
+                                        <connections>
+                                            <action selector="captureMovie:" destination="BYZ-38-t0r" id="weU-hn-Lar"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="U2n-2k-NrC"/>
                                     <barButtonItem systemItem="camera" id="beN-cz-MAG">
                                         <connections>
                                             <action selector="takePhotos:" destination="BYZ-38-t0r" id="JNT-fi-JVB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Hj9-0n-jA4"/>
+                                    <barButtonItem systemItem="save" id="cBE-CB-FaG">
+                                        <connections>
+                                            <action selector="saveToRollAlbum:" destination="BYZ-38-t0r" id="B43-gS-PcY"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -53,9 +65,21 @@
                             <constraint firstAttribute="trailing" secondItem="NFm-L4-4em" secondAttribute="trailing" id="gdH-uu-fYN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ImagePicker" id="Fjk-v9-uTW"/>
+                    <navigationItem key="navigationItem" title="ImagePicker" id="Fjk-v9-uTW">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="fnQ-vL-I86">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="D8L-qP-TB6">
+                                <rect key="frame" x="16" y="6" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="cameraBtn" destination="beN-cz-MAG" id="N1q-bg-oM4"/>
+                        <outlet property="captureMovieBtn" destination="MMC-Ib-MgY" id="C3i-kQ-JaL"/>
                         <outlet property="imageView" destination="NFm-L4-4em" id="YVG-lL-hGK"/>
+                        <outlet property="isUseCustomOverlayView" destination="D8L-qP-TB6" id="kp6-Ca-f9c"/>
+                        <outlet property="photoLibiaryBtn" destination="nwS-6v-63V" id="jxa-VO-Nek"/>
+                        <outlet property="saveBtn" destination="cBE-CB-FaG" id="lTG-Iv-8bo"/>
                         <outlet property="toobar" destination="6g2-xs-tiR" id="t98-bc-Cz1"/>
                     </connections>
                 </viewController>
