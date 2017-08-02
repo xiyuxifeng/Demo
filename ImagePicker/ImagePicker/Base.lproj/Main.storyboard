@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6vJ-JI-myU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ImagePicker-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImagePicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NFm-L4-4em">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6g2-xs-tiR">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Photo Libiary" id="nwS-6v-63V">
+                                        <connections>
+                                            <action selector="showPhotos:" destination="BYZ-38-t0r" id="jXQ-aF-QZF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2Uy-9S-zGJ"/>
+                                    <barButtonItem systemItem="camera" id="beN-cz-MAG">
+                                        <connections>
+                                            <action selector="takePhotos:" destination="BYZ-38-t0r" id="JNT-fi-JVB"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6g2-xs-tiR" secondAttribute="bottom" id="CFs-sx-eoZ"/>
+                            <constraint firstItem="NFm-L4-4em" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Cep-Xi-JAO"/>
+                            <constraint firstItem="6g2-xs-tiR" firstAttribute="top" secondItem="NFm-L4-4em" secondAttribute="bottom" id="NQO-AF-RPX"/>
+                            <constraint firstItem="6g2-xs-tiR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TRF-5t-DYG"/>
+                            <constraint firstAttribute="trailing" secondItem="6g2-xs-tiR" secondAttribute="trailing" id="WEH-mS-3Y5"/>
+                            <constraint firstItem="NFm-L4-4em" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="c1p-QU-8ar"/>
+                            <constraint firstItem="6g2-xs-tiR" firstAttribute="top" secondItem="NFm-L4-4em" secondAttribute="bottom" id="f7r-Ja-e5S"/>
+                            <constraint firstAttribute="trailing" secondItem="NFm-L4-4em" secondAttribute="trailing" id="gdH-uu-fYN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ImagePicker" id="Fjk-v9-uTW"/>
+                    <connections>
+                        <outlet property="imageView" destination="NFm-L4-4em" id="YVG-lL-hGK"/>
+                        <outlet property="toobar" destination="6g2-xs-tiR" id="t98-bc-Cz1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1069.5999999999999" y="-405.24737631184411"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="94L-gH-u6a">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6vJ-JI-myU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="94U-wJ-jkX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Cq2-GN-Pkp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UqA-FW-YbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="-543.77811094452773"/>
+        </scene>
+    </scenes>
+</document>

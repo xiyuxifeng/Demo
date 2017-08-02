@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="ImagePicker" customModuleProvider="target">
+            <connections>
+                <outlet property="delayBtn" destination="KKd-9q-H0u" id="djG-Yv-o5h"/>
+                <outlet property="delayLabel" destination="Oty-1X-hVc" id="7w1-vL-9Px"/>
+                <outlet property="delayStep" destination="9Pv-1T-aOf" id="YND-tY-k1e"/>
+                <outlet property="doneBtn" destination="bqG-V9-8R8" id="9JI-Fj-7Ui"/>
+                <outlet property="overlayView" destination="iN0-l3-epB" id="HTC-kX-gk9"/>
+                <outlet property="takeBtn" destination="Hcx-Tx-VsN" id="R6X-GN-86X"/>
+                <outlet property="timerLabel" destination="lnX-3q-YpZ" id="uet-he-W5P"/>
+                <outlet property="timerStep" destination="Y6x-j8-7pZ" id="UGu-UA-wkg"/>
+                <outlet property="timerTakeBtn" destination="mTz-nE-5e0" id="RWn-bD-Sy3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="401" height="153"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqG-V9-8R8">
+                    <rect key="frame" x="10" y="13" width="185.5" height="40"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.57254901960000004" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="XGT-Cr-yxZ"/>
+                    </constraints>
+                    <state key="normal" title="完成"/>
+                    <connections>
+                        <action selector="done:" destination="-1" eventType="touchUpInside" id="ilb-Ph-38v"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="J3c-hk-6fj">
+                    <rect key="frame" x="10" y="63" width="381" height="80"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qlf-wc-dVx">
+                            <rect key="frame" x="0.0" y="0.0" width="381" height="35"/>
+                            <subviews>
+                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minimumValue="3" maximumValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="9Pv-1T-aOf">
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="29"/>
+                                </stepper>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oty-1X-hVc">
+                                    <rect key="frame" x="130.5" y="0.0" width="120" height="35"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-9q-H0u">
+                                    <rect key="frame" x="260.5" y="0.0" width="120.5" height="35"/>
+                                    <color key="backgroundColor" red="0.96078431369999995" green="0.57254901960000004" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="延迟拍照"/>
+                                    <connections>
+                                        <action selector="delaySnap:" destination="-1" eventType="touchUpInside" id="ADR-5Q-Mv2"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mcP-l4-2br">
+                            <rect key="frame" x="0.0" y="45" width="381" height="35"/>
+                            <subviews>
+                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minimumValue="3" maximumValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="Y6x-j8-7pZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="29"/>
+                                </stepper>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnX-3q-YpZ">
+                                    <rect key="frame" x="130.5" y="0.0" width="120" height="35"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTz-nE-5e0">
+                                    <rect key="frame" x="260.5" y="0.0" width="120.5" height="35"/>
+                                    <color key="backgroundColor" red="0.96078431369999995" green="0.57254901960000004" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="循环拍照"/>
+                                    <connections>
+                                        <action selector="timerSnap:" destination="-1" eventType="touchUpInside" id="giI-t7-Bgt"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="aiW-1r-V7n"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hcx-Tx-VsN">
+                    <rect key="frame" x="205.5" y="13" width="185.5" height="40"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.57254901960000004" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="sfz-Td-dB9"/>
+                    </constraints>
+                    <state key="normal" title="拍照"/>
+                    <connections>
+                        <action selector="snap:" destination="-1" eventType="touchUpInside" id="Afq-0g-UaR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Hcx-Tx-VsN" secondAttribute="trailing" constant="10" id="1GQ-xE-fZo"/>
+                <constraint firstItem="Hcx-Tx-VsN" firstAttribute="centerY" secondItem="bqG-V9-8R8" secondAttribute="centerY" id="3ds-QR-MGV"/>
+                <constraint firstItem="bqG-V9-8R8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="9aq-wa-cO0"/>
+                <constraint firstItem="Hcx-Tx-VsN" firstAttribute="leading" secondItem="bqG-V9-8R8" secondAttribute="trailing" constant="10" id="Fjo-F4-XuZ"/>
+                <constraint firstItem="Hcx-Tx-VsN" firstAttribute="width" secondItem="bqG-V9-8R8" secondAttribute="width" id="HTC-v6-W0J"/>
+                <constraint firstItem="J3c-hk-6fj" firstAttribute="top" secondItem="bqG-V9-8R8" secondAttribute="bottom" constant="10" id="KhJ-el-gAK"/>
+                <constraint firstAttribute="trailing" secondItem="J3c-hk-6fj" secondAttribute="trailing" constant="10" id="NuG-S7-tY9"/>
+                <constraint firstItem="J3c-hk-6fj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="aFh-W7-M8J"/>
+                <constraint firstItem="Hcx-Tx-VsN" firstAttribute="height" secondItem="bqG-V9-8R8" secondAttribute="height" id="cgj-VL-hEB"/>
+                <constraint firstItem="J3c-hk-6fj" firstAttribute="top" secondItem="Hcx-Tx-VsN" secondAttribute="bottom" constant="10" id="gP4-ZC-wDO"/>
+                <constraint firstAttribute="bottom" secondItem="J3c-hk-6fj" secondAttribute="bottom" constant="10" id="gXK-aS-cHD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="95.5" y="-105.5"/>
+        </view>
+    </objects>
+</document>
