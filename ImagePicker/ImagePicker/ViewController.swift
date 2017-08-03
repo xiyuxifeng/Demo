@@ -33,7 +33,10 @@ class ViewController: UIViewController {
     var timer: Timer?
     var captureImages = [UIImage]()
     var imagePickerViewController: UIImagePickerController?
+    
+    var videoUrl: URL? = nil
     var player: AVPlayer? // 预览视频
+    var playerLayer: AVPlayerLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -202,14 +205,21 @@ class ViewController: UIViewController {
     
     // 保存到相册
     @IBAction func saveToRollAlbum(_ sender: UIBarButtonItem) {
-        var image: UIImage? = imageView.image
-        
-        if let ig = imageView.animationImages?.first {
-            image = ig
-        }
-
-        if image != nil {
-            UIImageWriteToSavedPhotosAlbum(image!, self, #selector(ViewController.image(image:didFinishSavingWithError:contextInfo:)), nil)
+        if let url = videoUrl {
+            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path) {
+                // 如果是视频的话直接保存
+                UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(ViewController.video(videoPath:didFinishSavingWithError:contextInfo:)), nil)
+            }
+        } else {
+            var image: UIImage? = imageView.image
+            
+            if let ig = imageView.animationImages?.first {
+                image = ig
+            }
+            
+            if image != nil {
+                UIImageWriteToSavedPhotosAlbum(image!, self, #selector(ViewController.image(image:didFinishSavingWithError:contextInfo:)), nil)
+            }
         }
     }
     
@@ -271,29 +281,62 @@ class ViewController: UIViewController {
 // MARK: - UIImagePickerControllerDelegate
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
-    func finishAndShowImages(isImage: Bool = true) {
-        if captureImages.count > 0 {
-            // only one image
-            if captureImages.count == 1 {
-                imageView.image = captureImages.first
-            } else {
-                // mulit images
-                imageView.animationImages = captureImages
-                imageView.animationDuration = 2.0
-                imageView.animationRepeatCount = 0
-                imageView.startAnimating()
+    func finishAndShowImages(isVideo: Bool = false) {
+        
+        if !isVideo {
+            imageView.isHidden = false
+            player?.pause()
+            player = nil
+            playerLayer?.removeFromSuperlayer()
+            playerLayer = nil
+            videoUrl = nil
+            
+            if captureImages.count > 0 {
+                // only one image
+                if captureImages.count == 1 {
+                    imageView.image = captureImages.first
+                } else {
+                    // mulit images
+                    imageView.animationImages = captureImages
+                    imageView.animationDuration = 2.0
+                    imageView.animationRepeatCount = 0
+                    imageView.startAnimating()
+                }
+            }
+            
+            // clear for next use
+            captureImages = []
+            imagePickerViewController = nil
+        } else {
+            if let url = videoUrl {
+                imageView.isHidden = true
+                imageView.image = nil
+                imageView.stopAnimating()
+                imageView.animationImages = nil
+                
+                player?.pause()
+                player = nil
+                playerLayer?.removeFromSuperlayer()
+                playerLayer = nil
+                
+                player = AVPlayer(url: url)
+                playerLayer = AVPlayerLayer(player: player)
+                playerLayer?.frame = imageView.frame
+                playerLayer?.repeatCount = Float.greatestFiniteMagnitude
+                view.layer.addSublayer(playerLayer!)
+                
+                player?.play()
             }
         }
         
-        dismiss(animated: true, completion: nil)
-
-        // clear for next use
-        captureImages = []
-        imagePickerViewController = nil
+        dismiss(animated: true, completion: nil)        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let mediaType = info[UIImagePickerControllerMediaType] as? String {
+            
+            var isVideo = false
+            
             if mediaType == kUTTypeImage as String {
                 // 如果是照片的话先显示 在手动保存
                 if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -309,14 +352,12 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 }
             } else if mediaType == kUTTypeMovie as String {
                 if let url = info[UIImagePickerControllerMediaURL] as? URL { //视频路径
-                    if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path) {
-                        // 如果是视频的话直接保存
-                        UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(ViewController.video(videoPath:didFinishSavingWithError:contextInfo:)), nil)
-                    }
+                    videoUrl = url
+                    isVideo = true
                 }
             }
             
-            finishAndShowImages()
+            finishAndShowImages(isVideo: isVideo)
         }
     }
     
