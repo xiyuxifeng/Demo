@@ -62,6 +62,18 @@ class ViewController: UIViewController {
             saveBtn.isEnabled = false
         }*/
     }
+    @IBAction func addWebClipTest(_ sender: UIBarButtonItem) {
+        /*out.mobileconfig是沙盒里的东东，safari访问不到，因此openurl会失败。可以看看openurl的返回值，一定是flase。
+        有两种方法：
+        1、将out.mobileconfig放在网络服务器上，使用safari可以下载out.mobileconfig并安装。
+        2、在本地建http server，仿1
+        */
+        
+        let url1 = URL.init(string: "http://192.168.1.100:8888/webclip.mobileconfig")
+        UIApplication.shared.open(url1!, options: [:]) { (success) in
+            print(success)
+        }
+    }
     
     // 相册
     @IBAction func showPhotos(_ sender: UIBarButtonItem) {

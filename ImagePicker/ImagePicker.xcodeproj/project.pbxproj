@@ -51,6 +51,7 @@
 		2D84B3D01F307679005418BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B2F26B81F30C49800360ED3 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		7B2F26BA1F30C4A100360ED3 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		7B7796C01FB085FB005F2A9F /* webclip.mobileconfig */ = {isa = PBXFileReference; lastKnownFileType = file; path = webclip.mobileconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,7 @@
 			children = (
 				2D84B3AE1F307678005418BC /* AppDelegate.swift */,
 				2D84B3B01F307678005418BC /* ViewController.swift */,
+				7B7796C01FB085FB005F2A9F /* webclip.mobileconfig */,
 				7B2F26B81F30C49800360ED3 /* OverlayView.swift */,
 				7B2F26BA1F30C4A100360ED3 /* OverlayView.xib */,
 				2D84B3B21F307678005418BC /* Main.storyboard */,
